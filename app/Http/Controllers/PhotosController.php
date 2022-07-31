@@ -7,6 +7,8 @@ use App\Models\Photo;
 
 class PhotosController extends Controller
 {
+
+
     public function list()
     {
         return view('photos.list', [

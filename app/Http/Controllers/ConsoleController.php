@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\Crypt;
 
 class ConsoleController extends Controller
 {
-    
+                
+    //creating 3 methods to match the routes
+
+    //logs out and redericts to homepage
     public function logout()
     {
         auth()->logout();
@@ -21,6 +24,7 @@ class ConsoleController extends Controller
 
     public function login()
     {
+
 
         //***NOTE**'dd() - It is a helper function which is used to dump a variable's contents to the browser and stop the further script execution. It stands for Dump and Die.' 
             //more info: (https://www.bestinterviewquestion.com/question/what-is-dd-function-in-laravel-tahyr979#:~:text=()%20in%20Laravel%3F-,What%20is%20the%20use%20of%20dd()%20in%20Laravel%3F,stands%20for%20Dump%20and%20Die.)
