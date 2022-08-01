@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\CollectionsController;
+use App\Http\Controllers\UsersController;
+
 
 
 /*
@@ -45,3 +47,9 @@ Route::get('/console/collections/delete/{collection:id}', [CollectionsController
 Route::get('/console/collections/image/{collection:id}', [CollectionsController::class, 'imageForm'])->where('collection', '[0-9]+')->middleware('auth');
 Route::post('/console/collections/image/{collection:id}', [CollectionsController::class, 'image'])->where('collection', '[0-9]+')->middleware('auth');
 
+Route::get('/console/users/list', [UsersController::class, 'list'])->middleware('auth');
+Route::get('/console/users/add', [UsersController::class, 'addForm'])->middleware('auth');
+Route::post('/console/users/add', [UsersController::class, 'add'])->middleware('auth');
+Route::get('/console/users/edit/{user:id}', [UsersController::class, 'editForm'])->where('user', '[0-9]+')->middleware('auth');
+Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware('auth');
+Route::get('/console/users/delete/{user:id}', [UsersController::class, 'delete'])->where('user', '[0-9]+')->middleware('auth');

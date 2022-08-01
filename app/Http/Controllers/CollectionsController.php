@@ -29,6 +29,7 @@ class CollectionsController extends Controller
 
         $attributes = request()->validate([
             'title' => 'required',
+            'film' => 'required',
         ]);
 
         $collection = new Collection();
@@ -82,7 +83,7 @@ class CollectionsController extends Controller
     {
 
         $attributes = request()->validate([
-            'image' => 'required|image',
+            'image' => 'nullable|image',
         ]);
 
         Storage::delete($collection->image);
@@ -92,7 +93,7 @@ class CollectionsController extends Controller
         $collection->image = $path;
         $collection->save();
         
-        return redirect('/console/collection/list')
+        return redirect('/console/collections/list')
             ->with('message', 'Collection image has been edited!');
     }
     
