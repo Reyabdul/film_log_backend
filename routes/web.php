@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\PhotosController;
+use App\Http\Controllers\CollectionsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +28,20 @@ Route::post('/console/login', [ConsoleController::class, 'login'])->middleware('
 Route::get('/console/dashboard', [ConsoleController::class, 'dashboard'])->middleware('auth');
 
 Route::get('/console/photos/list', [PhotosController::class, 'list'])->middleware('auth');
-Route::get('/console/photos/delete/{photo:id}', [PhotosController::class, 'delete'])->where('photo', '[0-9]+')->middleware('auth');
 Route::get('/console/photos/add', [PhotosController::class, 'addForm'])->middleware('auth');
 Route::post('/console/photos/add', [PhotosController::class, 'add'])->middleware('auth');
 Route::get('/console/photos/edit/{photo:id}', [PhotosController::class, 'editForm'])->where('photo', '[0-9]+')->middleware('auth');
 Route::post('/console/photos/edit/{photo:id}', [PhotosController::class, 'edit'])->where('photo', '[0-9]+')->middleware('auth');
+Route::get('/console/photos/delete/{photo:id}', [PhotosController::class, 'delete'])->where('photo', '[0-9]+')->middleware('auth');
+Route::get('/console/photos/image/{photo:id}', [PhotosController::class, 'imageForm'])->where('photo', '[0-9]+')->middleware('auth');
+Route::post('/console/photos/image/{photo:id}', [PhotosController::class, 'image'])->where('photo', '[0-9]+')->middleware('auth');
+
+Route::get('/console/collections/list', [CollectionsController::class, 'list'])->middleware('auth');
+Route::get('/console/collections/add', [CollectionsController::class, 'addForm'])->middleware('auth');
+Route::post('/console/collections/add', [CollectionsController::class, 'add'])->middleware('auth');
+Route::get('/console/collections/edit/{collection:id}', [CollectionsController::class, 'editForm'])->where('collection', '[0-9]+')->middleware('auth');
+Route::post('/console/collections/edit/{collection:id}', [CollectionsController::class, 'edit'])->where('collection', '[0-9]+')->middleware('auth');
+Route::get('/console/collections/delete/{collection:id}', [CollectionsController::class, 'delete'])->where('collection', '[0-9]+')->middleware('auth');
+Route::get('/console/collections/image/{collection:id}', [CollectionsController::class, 'imageForm'])->where('collection', '[0-9]+')->middleware('auth');
+Route::post('/console/collections/image/{collection:id}', [CollectionsController::class, 'image'])->where('collection', '[0-9]+')->middleware('auth');
+
