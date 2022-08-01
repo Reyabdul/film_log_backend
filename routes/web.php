@@ -29,3 +29,5 @@ Route::get('/console/photos/list', [PhotosController::class, 'list'])->middlewar
 Route::get('/console/photos/delete/{photo:id}', [PhotosController::class, 'delete'])->where('photo', '[0-9]+')->middleware('auth');
 Route::get('/console/photos/add', [PhotosController::class, 'addForm'])->middleware('auth');
 Route::post('/console/photos/add', [PhotosController::class, 'add'])->middleware('auth');
+Route::get('/console/photos/edit/{photo:id}', [PhotosController::class, 'editForm'])->where('photo', '[0-9]+')->middleware('auth');
+Route::post('/console/photos/edit/{photo:id}', [PhotosController::class, 'edit'])->where('photo', '[0-9]+')->middleware('auth');

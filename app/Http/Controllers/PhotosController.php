@@ -42,7 +42,7 @@ class PhotosController extends Controller
         ]);
 
 
-         //ddd('Add Type');
+         //ddd('Add Photo');
 
         $photo = new Photo();
         $photo->title = $attributes['title'];
@@ -50,5 +50,26 @@ class PhotosController extends Controller
 
         return redirect('/console/photos/list')
             ->with('message', 'Photo has been added!');
+    }
+
+    public function editForm(Photo $photo)
+    {
+        return view('photos.edit', [
+            'photo' => $photo,
+        ]);
+    }
+
+    public function edit(Photo $photo)
+    {
+
+        $attributes = request()->validate([
+            'title' => 'required',
+        ]);
+
+        $photo->title = $attributes['title'];
+        $photo->save();
+
+        return redirect('/console/photos/list')
+            ->with('message', 'Photo has been edited!');
     }
 }
