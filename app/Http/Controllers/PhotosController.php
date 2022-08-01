@@ -15,4 +15,16 @@ class PhotosController extends Controller
             'photos' =>Photo::all()
         ]);
     }
+
+    public function delete(Photo $photo)
+    {
+        //debugging function: displays info
+            //ddd($photo);
+
+        $photo->delete();
+        
+        //handles delete and adds message
+        return redirect('/console/photos/list')
+            ->with('message', 'Photo has been deleted!');        
+    }
 }

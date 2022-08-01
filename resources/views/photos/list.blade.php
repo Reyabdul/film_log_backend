@@ -2,6 +2,19 @@
 
 @section ('content')
 
+<!--input delete message-->
+<?php if(session()->has('message')):  ?>
+
+    <div class="w3-padding w3-margin-top w3-margin-bottom">
+        <div class="w3-red w3-center w3-padding">
+            <?= session()->get('message') ?>
+        </div>
+    </div>
+
+<?php endif; ?>
+
+
+<!--start of Manage Photo section-->
 <section class="w3-padding">
 
     <h2>Manage Photos</h2>
