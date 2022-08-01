@@ -27,4 +27,28 @@ class PhotosController extends Controller
         return redirect('/console/photos/list')
             ->with('message', 'Photo has been deleted!');        
     }
+
+    public function addForm()
+    {
+
+        return view('photos.add');
+    }
+    
+    public function add()
+    {
+
+        $attributes = request()->validate([
+            'title' => 'required',
+        ]);
+
+
+         //ddd('Add Type');
+
+        $photo = new Photo();
+        $photo->title = $attributes['title'];
+        $photo->save();
+
+        return redirect('/console/photos/list')
+            ->with('message', 'Photo has been added!');
+    }
 }
