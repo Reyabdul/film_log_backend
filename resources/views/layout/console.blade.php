@@ -19,9 +19,8 @@
 
         <!--generating url-->
         <?php 
-            echo url("app.js")
+           // echo url("app.js")
         ?>
-
         <h1>CMS Admin Dashboard</h1>
 
         <!--check if user have authentication to be in dashboard-->
